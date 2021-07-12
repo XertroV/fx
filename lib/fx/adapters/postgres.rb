@@ -1,6 +1,6 @@
 require "fx/adapters/postgres/connection"
 require "fx/adapters/postgres/functions"
-require "fx/adapters/postgres/triggers"
+#require "fx/adapters/postgres/triggers"
 
 module Fx
   # F(x) database adapters.
@@ -56,9 +56,9 @@ module Fx
       # populate the `schema.rb` file.
       #
       # @return [Array<Fx::Trigger>]
-      def triggers
-        Triggers.all(connection)
-      end
+      #def triggers
+      #  Triggers.all(connection)
+      #end
 
       # Creates a function in the database.
       #
@@ -80,9 +80,9 @@ module Fx
       # @param sql_definition The SQL schema for the trigger.
       #
       # @return [void]
-      def create_trigger(sql_definition)
-        execute sql_definition
-      end
+      #def create_trigger(sql_definition)
+      #  execute sql_definition
+      #end
 
       # Updates a function in the database.
       #
@@ -111,10 +111,10 @@ module Fx
       # @param sql_definition The SQL schema for the function.
       #
       # @return [void]
-      def update_trigger(name, on:, sql_definition:)
-        drop_trigger(name, on: on)
-        create_trigger(sql_definition)
-      end
+      #def update_trigger(name, on:, sql_definition:)
+      #  drop_trigger(name, on: on)
+      #  create_trigger(sql_definition)
+      #end
 
       # Drops the function from the database
       #
@@ -141,9 +141,9 @@ module Fx
       # @param on The associated table for the trigger to drop
       #
       # @return [void]
-      def drop_trigger(name, on:)
-        execute "DROP TRIGGER #{name} ON #{on};"
-      end
+      #def drop_trigger(name, on:)
+      #  execute "DROP TRIGGER #{name} ON #{on};"
+      #end
 
       private
 
